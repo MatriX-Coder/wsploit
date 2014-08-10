@@ -1,2 +1,1 @@
-wsploit
-=======
+wsploit is a small set of tools that helps web hackers doing their job .

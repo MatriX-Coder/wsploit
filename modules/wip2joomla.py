@@ -19,12 +19,17 @@ def file_len(fname):
         for i, l in enumerate(f):
             pass
     return i + 1
+    
+def lista(ipz):
+	ss = open(ipz , 'r')
+	ips = ss.readlines()
+	for ip in ips:
+		ip = ip.replace('\n' , '')
+		one(ip) 
 
-def init():
+def one(s):
 	try:
 		page = 1
-		line_1 = '\nEnter IP : '
-		s = raw_input(line_1)
 		print "\n"
 		while page <= 200:
 			bing = "http://www.bing.com/search?q=ip%3A"+s+"+index.php?option=com&first="+str(page)
@@ -51,11 +56,32 @@ def init():
 					lines_seen.add(line)
 		outfile = open('modules/tmp/jm1.txt','r')
 		ss = outfile.read()
+		print '\n' + '[*]-Target : ' + s + '\n'
 		print ss
 		print 'Uniq Sites Found : %s\n' % file_len('modules/tmp/jm1.txt')
+		print '_'*50
 		outfile.close()
 		os.remove('modules/tmp/jm1.txt')			
 		os.remove('modules/tmp/jm.txt')
 	except(KeyboardInterrupt):
 		print '\n[*] Ctrl + C detetcted Good bye'
 		exit()
+		
+def init():
+	print '\n[1]-Single IP'
+	print '[2]-List Of IPs\n'
+	line_1 = "Enter Option : "
+	choose = raw_input(line_1)
+	if choose.isdigit():
+		choose = int(choose)
+		pass
+	else :
+		print "Choose From List Bro"
+		exit()
+	if choose == 1:
+		oneip = raw_input('\nEnter IP : ')
+		one(oneip)
+	if choose == 2:
+		ipz = raw_input('\nEnter Text File : ')
+		lista(ipz)
+		

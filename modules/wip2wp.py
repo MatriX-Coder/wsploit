@@ -33,7 +33,7 @@ def init():
 			findbing = re.findall('<li class="b_algo"><h2><a href="(.*?)" h=',readbing)
 			for i in range(len(findbing)):
 				x = findbing[i]
-				xz = re.findall('(.*?)?page_id=',x)
+				xz = re.findall('(.*?)\?page_id=',x)
 				ss = open('modules/tmp/wp.txt','a+')
 				ss.writelines(xz)
 				ss.writelines('\n')
